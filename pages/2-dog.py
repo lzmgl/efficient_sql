@@ -2,7 +2,7 @@ import streamlit as st
 
 from PIL import Image # 파이썬 기본라이브러리는 바로 사용 가능!
 import os
-
+path_now = os.path.dirname(os.path.abspath(__file__))
 dog_image_paths=os.path.join(path_now, '..', 'esset', 'dog')
 dog_image_files=os.listdir(dog_image_paths)
 
