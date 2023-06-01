@@ -29,15 +29,13 @@ db = pymysql.connect(
 st.title("INDEX") 
 
 import time
-
+start = time.time()
 with st.sidebar.form("Input"):
     queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     btnResult = st.form_submit_button('Run')
 if btnResult:
-    st.sidebar.text('Button pushed')
-
-
-start = time.time()
+    st.sidebar.text(f'Button pushed {time.time()}')
+    start = time.time()
 SQL = queryText
 try:
     if not SQL:
