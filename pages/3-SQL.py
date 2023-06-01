@@ -33,11 +33,11 @@ db = pymysql.connect(
     db=database_name,   # Database name
     charset='utf8'
 )
-sql = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
 cursor.execute(SQL)
 result = cursor.fetchall()  
 st.write(
-    "sql = ", sql,
+    "sql = ", SQL,
     "result = ", result
 )
