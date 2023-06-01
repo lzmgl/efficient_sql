@@ -18,10 +18,11 @@ st.image(Image.open(os.path.join(dog_image_paths, add_radio)))
 import pymysql
 import pandas as pd
 
-host_name = 'localhost'
+
+host_name = "woori-fisa.cfnz7hfzq9bn.ap-northeast-2.rds.amazonaws.com"
 host_port = 3306
-username = 'root'
-password = '0000'
+username = "admin"
+password = "woorifisa1!"
 database_name = 'sql_improve'
 
 db = pymysql.connect(
