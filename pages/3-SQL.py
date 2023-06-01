@@ -30,7 +30,7 @@ st.title("INDEX")
 
 import time
 start = time.time()
-SQL = st.text_input('Enter some text')
+SQL = st.text_input('Enter query')
 if not SQL:
     SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
