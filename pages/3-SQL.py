@@ -33,12 +33,15 @@ db = pymysql.connect(
     db=database_name,   # Database name
     charset='utf8'
 )
+import time
+start = time.time()
 SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
 cursor.execute(SQL)
 result = cursor.fetchall()
 df=pd.DataFrame(result)
 st.write(
-    "sql = ", SQL,
-    "result = ", df
+    "sql = ", SQL,"\n",
+    "result = ", df,
+    "time = ", time.time()-start
 )
