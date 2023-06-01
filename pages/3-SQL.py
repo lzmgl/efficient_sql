@@ -34,6 +34,7 @@ db = pymysql.connect(
     charset='utf8'
 )
 sql = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+cursor = db.cursor()
 cursor.execute(SQL)
 result = cursor.fetchall()  
 st.write(
