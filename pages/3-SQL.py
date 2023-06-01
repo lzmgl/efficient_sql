@@ -34,6 +34,8 @@ SQL = st.text_input('Enter some text')
 # SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
 cursor.execute(SQL)
+num_fields = len(cursor.description)
+field_names = [i[0] for i in cursor.description]
 result = cursor.fetchall()
 df=pd.DataFrame(result)
 st.write(
