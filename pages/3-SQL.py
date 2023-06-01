@@ -36,8 +36,9 @@ db = pymysql.connect(
 SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
 cursor.execute(SQL)
-result = cursor.fetchall()  
+result = cursor.fetchall()
+df=pd.DataFrame(result)
 st.write(
     "sql = ", SQL,
-    "result = ", result
+    "result = ", df
 )
