@@ -31,14 +31,15 @@ st.title("INDEX")
 import time
 start = time.time()
 SQL = st.text_input('Enter some text')
-# SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+if !SQL:
+    SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
 cursor.execute(SQL)
 columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 df=pd.DataFrame(result)
 st.write(
-    "sql = ", SQL, "\n",
-    "result = ", df,
+    "sql = ", SQL,
+    df,
     "time = ", time.time()-start
 )
