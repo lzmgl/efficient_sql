@@ -29,8 +29,19 @@ db = pymysql.connect(
 st.title("INDEX") 
 
 import time
+
+with st.sidebar.form("Input"):
+    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    btnResult = st.form_submit_button('Run')
+if btnResult:
+    st.sidebar.text('Button pushed')
+
+    # run query
+    st.write(queryText)
+
+
 start = time.time()
-SQL = st.text_input('Enter query')
+SQL = queryText
 if not SQL:
     SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 cursor = db.cursor()
@@ -43,8 +54,3 @@ st.write(
     df,
     "time = ", time.time()-start
 )
-if btnResult:
-    st.sidebar.text('Button pushed')
-
-    # run query
-    st.write(queryText)
