@@ -36,21 +36,21 @@ with st.sidebar.form("Input"):
 if btnResult:
     st.sidebar.text('Button pushed')
 
-    # run query
-    st.write(queryText)
-
 
 start = time.time()
 SQL = queryText
-if not SQL:
-    SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
-cursor = db.cursor()
-cursor.execute(SQL)
-columns = cursor.description 
-result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-df=pd.DataFrame(result)
+try:
+    if not SQL:
+        SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+    cursor = db.cursor()
+    cursor.execute(SQL)
+    columns = cursor.description 
+    result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+    df=pd.DataFrame(result)
+except:
+    df='query 제대로 입력해'
 st.write(
-    "sql = ", SQL,
+    SQL,
     df,
     "time = ", time.time()-start
 )
