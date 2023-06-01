@@ -41,9 +41,3 @@ st.write(
     "result = ", df,
     "time = ", time.time()-start
 )
-
-with st.sidebar:
-    add_radio = st.radio(
-        "개 사진 골라",
-        (dog_image_files)
-    )
