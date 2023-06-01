@@ -51,6 +51,8 @@ except:
     df='query 제대로 입력해'
 st.write(
     SQL,
+    "\n",
     df,
+    "\n",
     "time = ", time.time()-start
 )
