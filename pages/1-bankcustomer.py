@@ -34,9 +34,7 @@ with st.sidebar.form("Input"):
     queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     btnResult = st.form_submit_button('Run')
 if btnResult:
-    tm = time.localtime(time.time(timezone('Asia/Seoul')))
-    tmm=time.strftime('%Y-%m-%d %I:%M:%S %p', tm)
-    st.sidebar.text(f'Button pushed {tmm}')
+    st.sidebar.text(f'Button pushed')
     start = time.time()
 SQL = queryText
 try:
