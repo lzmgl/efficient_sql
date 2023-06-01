@@ -23,7 +23,7 @@ host_name = "woori-fisa.cfnz7hfzq9bn.ap-northeast-2.rds.amazonaws.com"
 host_port = 3306
 username = "admin"
 password = "woorifisa1!"
-database_name = 'sql_improve'
+database_name = 'SQL_IMPROVE'
 
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
