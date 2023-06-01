@@ -1,5 +1,5 @@
 import streamlit as st  
-
+from pytz import timezone
 from PIL import Image # 파이썬 기본라이브러리는 바로 사용 가능!
 import os
 
@@ -34,7 +34,7 @@ with st.sidebar.form("Input"):
     queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     btnResult = st.form_submit_button('Run')
 if btnResult:
-    tm = time.localtime(time.time())
+    tm = time.localtime(time.time(timezone('Asia/Seoul')))
     tmm=time.strftime('%Y-%m-%d %I:%M:%S %p', tm)
     st.sidebar.text(f'Button pushed {tmm}')
     start = time.time()
