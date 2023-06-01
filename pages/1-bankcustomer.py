@@ -35,7 +35,8 @@ with st.sidebar.form("Input"):
     btnResult = st.form_submit_button('Run')
 if btnResult:
     tm = time.localtime(time.time())
-    st.sidebar.text(f'Button pushed {tm}')
+    tmm=time.strftime('%Y-%m-%d %I:%M:%S %p', tm)
+    st.sidebar.text(f'Button pushed {tmm}')
     start = time.time()
 SQL = queryText
 try:
