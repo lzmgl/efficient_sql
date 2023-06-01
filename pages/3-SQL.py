@@ -13,3 +13,29 @@ with st.sidebar:
         (dog_image_files)
     )
 st.image(Image.open(os.path.join(dog_image_paths, add_radio)))
+
+
+import pymysql
+import pandas as pd
+
+host_name = 'localhost'
+host_port = 3306
+username = 'root'
+password = '0000'
+database_name = 'sql_improve'
+
+db = pymysql.connect(
+    host=host_name,     # MySQL Server Address
+    port=host_port,          # MySQL Server Port
+    user=username,      # MySQL username
+    passwd=password,    # password for MySQL username
+    db=database_name,   # Database name
+    charset='utf8'
+)
+sql = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+cursor.execute(SQL)
+result = cursor.fetchall()  
+st.write(
+    "sql = ", sql,
+    "result = ", result
+)
