@@ -22,7 +22,7 @@ db = pymysql.connect(
     db=database_name,   # Database name
     charset='utf8'
 )
-SQL=''
+SQL='''SELECT * FROM salaries'''
 if not SQL:
     SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 SQL1 = '''SELECT 
@@ -79,7 +79,6 @@ SQL=queryText
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
-
     try:
         cursor.execute(SQL)
         columns = cursor.description 
