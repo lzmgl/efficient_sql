@@ -38,7 +38,7 @@ start = time.time()
 with st.sidebar.form("Input"):
     st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
-
+with st.sidebar.form("Input2"):
     st.sidebar.text(f'있이 하는 쿼리')
     btnResult1 = st.form_submit_button('Run')
 if btnResult:
