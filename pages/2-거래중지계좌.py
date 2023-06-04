@@ -14,7 +14,7 @@ host_port = 3306
 username = "admin"
 password = "woorifisa1!"
 database_name = 'SQL_IMPROVE'
-
+df=''
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
     port=host_port,          # MySQL Server Port
