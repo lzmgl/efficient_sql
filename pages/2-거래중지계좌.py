@@ -36,6 +36,7 @@ st.image(image1)
 import time
 start = time.time()
 with st.sidebar.form("Input"):
+    st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
 if btnResult:
     st.sidebar.text(f'Button pushed')
