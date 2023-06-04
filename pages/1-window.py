@@ -23,7 +23,6 @@ db = pymysql.connect(
     charset='utf8'
 )
 SQL=''
-
 if not SQL:
     SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 SQL1 = '''SELECT 
@@ -68,30 +67,21 @@ import time
 start = time.time()
 with st.sidebar.form("Input"):
     queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    queryText= SQL1
     st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
 with st.sidebar.form("Input2"):
     queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    queryText=SQL2
     st.sidebar.text(f'있이 하는 쿼리')
     btnResult1 = st.form_submit_button('Run')
-SQL1=queryText
-SQL2=queryText
+SQL=queryText
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
 
     try:
-        cursor.execute(SQL1)
-        columns = cursor.description 
-        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-    except:
-        df='query 제대로 입력해'
-if btnResult1:
-    st.sidebar.text(f'Button pushed')
-    start = time.time()
-
-    try:
-        cursor.execute(SQL2)
+        cursor.execute(SQL)
         columns = cursor.description 
         result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     except:
