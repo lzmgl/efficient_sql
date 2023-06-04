@@ -64,13 +64,6 @@ columns = cursor.description
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 df=pd.DataFrame(result)
 
-if btnResult:
-    st.sidebar.text(f'Button pushed')
-    start = time.time()
-    SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-    cursor.execute(SQL)
-    columns = cursor.description 
-    result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 
 df=pd.DataFrame(result)
 st.write(
