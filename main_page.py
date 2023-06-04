@@ -26,7 +26,7 @@ db = pymysql.connect(
 
 
 
-st.title("INDEX") 
+st.title("EFFICIENT SQL") 
 
 import time
 start = time.time()
@@ -55,6 +55,7 @@ st.write(
     "time = ", time.time()-start
 )
 st.write(
-    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
+    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
+st.write(
     "SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;"
 )
