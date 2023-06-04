@@ -61,7 +61,7 @@ SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND b
 cursor.execute(SQL)
 columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-df=pd.DataFrame(result)
+df=""
 st.write(
     btnResult = st.button('Click me')
 )
@@ -78,7 +78,7 @@ if btnResult:
         df='query 제대로 입력'
 
     df=pd.DataFrame(result)
-    st.write(
-        df,
-        "time = ", time.time()-start
-    )
+st.write(
+    df,
+    "time = ", time.time()-start
+)
