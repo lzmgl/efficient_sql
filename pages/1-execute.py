@@ -74,14 +74,14 @@ if btnResult:
 SQL = queryText
 try:
     if not SQL:
-        SQL = '''SELECT * FROM bankcustomertest;'''
+        SQL = ''''''
     cursor = db.cursor()
     cursor.execute(SQL)
     columns = cursor.description 
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     df=pd.DataFrame(result)
 except:
-    df='query 제대로 입력해'
+    df='query 입력해주세요'
 st.write(
     "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
 st.write(
