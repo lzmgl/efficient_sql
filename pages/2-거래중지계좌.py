@@ -23,9 +23,13 @@ db = pymysql.connect(
     db=database_name,   # Database name
     charset='utf8'
 )
-image_path="../esset/1.png"
 
-image1 = Image.open(image_path)
+
+
+_abspath = os.path.dirname(os.path.abspath(__file__))+'/../data/'
+image_path1 = _abspath + '1.png'
+
+image1 = Image.open(image_path1)
 st.image(image1)
 
 st.title("거래중지계좌 조회") 
