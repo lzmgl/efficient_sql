@@ -42,11 +42,11 @@ with st.sidebar.form("Input"):
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
+cursor = db.cursor()
 SQL = queryText
 # try:
 #     if not SQL:
 #         SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
-#     cursor = db.cursor()
 #     cursor.execute(SQL)
 #     columns = cursor.description 
 #     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
