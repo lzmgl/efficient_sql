@@ -60,7 +60,7 @@ image1 = Image.open(image_path1)
 st.image(image1)
 
 cursor = db.cursor()
-cursor.execute(SQL1)
+cursor.execute(SQL)
 columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 import time
