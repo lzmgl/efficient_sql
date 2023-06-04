@@ -63,9 +63,6 @@ cursor.execute(SQL)
 columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 df=pd.DataFrame(result)
-
-
-df=pd.DataFrame(result)
 st.write(
     df,
     "time = ", time.time()-start
