@@ -47,8 +47,7 @@ SQL1 = '''SELECT
     ), 0) as 연봉차이
 FROM salaries s1;'''
 
-SQL2 = '''SELECT emp_no, from_date, salary,
-LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
+SQL2 = '''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
 salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
 FROM salaries;'''
 
