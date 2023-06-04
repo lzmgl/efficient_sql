@@ -35,11 +35,17 @@ st.image(image1)
 
 import time
 start = time.time()
+with st.sidebar.form("Input"):
+    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    btnResult = st.form_submit_button('Run')
+if btnResult:
+    st.sidebar.text(f'Button pushed')
+    start = time.time()
 cursor = db.cursor()
-SQL = ""
+SQL = queryText
 try:
     if not SQL:
-        SQL = '''SELECT * FROM bankcustomertest;'''
+        SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
     cursor.execute(SQL)
     columns = cursor.description 
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
