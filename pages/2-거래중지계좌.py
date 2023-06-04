@@ -36,13 +36,12 @@ st.image(image1)
 import time
 start = time.time()
 with st.sidebar.form("Input"):
-    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     btnResult = st.form_submit_button('Run')
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
 cursor = db.cursor()
-SQL = queryText
+SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 try:
     if not SQL:
         SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
