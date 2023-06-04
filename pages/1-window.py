@@ -38,6 +38,9 @@ start = time.time()
 with st.sidebar.form("Input"):
     st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
+
+    st.sidebar.text(f'있이 하는 쿼리')
+    btnResult1 = st.form_submit_button('Run')
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
@@ -64,28 +67,6 @@ SQL1 = '''SELECT
     ), 0) as 연봉차이
 FROM salaries s1;'''
 try:
-    if not SQL1:
-        SQL1 = '''SELECT 
-    emp_no, 
-    from_date, 
-    salary, 
-    COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as last_year_salary,
-    salary - COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as 연봉차이
-FROM salaries s1;'''
     cursor.execute(SQL1)
     columns = cursor.description 
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
@@ -96,61 +77,6 @@ except:
 st.write(
     "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
 )
-SQL1='''SELECT 
-    emp_no, 
-    from_date, 
-    salary, 
-    COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as last_year_salary,
-    salary - COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as 연봉차이
-FROM salaries s1;'''
-cursor.execute(SQL1)
-columns = cursor.description 
-result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-
-if btnResult:
-    try:
-        SQL1='''SELECT 
-    emp_no, 
-    from_date, 
-    salary, 
-    COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as last_year_salary,
-    salary - COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as 연봉차이
-FROM salaries s1;'''
-        cursor.execute(SQL1)
-        columns = cursor.description 
-        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-    except:
-        df='query 제대로 입력'
-
-    df=pd.DataFrame(result)
 st.write(
     df,
     "time = ", time.time()-start
