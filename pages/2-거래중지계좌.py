@@ -64,7 +64,6 @@ result = [{columns[index][0]:column for index, column in enumerate(value)} for v
 if btnResult:
     try:
         SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-        start = time.time()
         cursor.execute(SQL)
         columns = cursor.description 
         result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
