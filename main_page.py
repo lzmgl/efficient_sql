@@ -26,7 +26,6 @@ st.write(
 
 st.header("partitioning 활용 실습") 
 
-st.header("Index 활용 실습") 
 image2 = Image.open(_abspath + '/1.png')
 st.image(image2)
 st.write(
@@ -34,7 +33,6 @@ st.write(
 )
 st.header("window function 활용 실습") 
 
-st.header("Index 활용 실습") 
 image3 = Image.open(_abspath + '/1.png')
 st.image(image3)
 st.write(
