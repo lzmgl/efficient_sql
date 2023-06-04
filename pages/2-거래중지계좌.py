@@ -64,9 +64,9 @@ st.write(
     btnResult = st.button('Click me')
 )
 
-SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 if btnResult:
     try:
+        SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
         start = time.time()
         cursor.execute(SQL)
         columns = cursor.description 
