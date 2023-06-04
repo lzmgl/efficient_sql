@@ -15,8 +15,8 @@ username = "admin"
 password = "woorifisa1!"
 database_name = 'SQL_IMPROVE'
 
-sql_list=[
-          '''SELECT 
+sql_list={
+          'window 없이' : '''SELECT 
     emp_no, 
     from_date, 
     salary, 
@@ -37,15 +37,19 @@ sql_list=[
         LIMIT 1
     ), 0) as 연봉차이
 FROM salaries s1;''',
+'window 활용':
 '''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
 salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
 FROM salaries;''',
+'partitioning 없이':
 '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;''', 
+'partitioning 활용':
 '''partitioning''',
+'index 없이':
 '''index''',
+'index 활용':
 '''index2'''
-
-]
+}
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
     port=host_port,          # MySQL Server Port
