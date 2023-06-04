@@ -36,7 +36,7 @@ st.image(image1)
 import time
 start = time.time()
 cursor = db.cursor()
-SQL = queryText
+SQL = ""
 try:
     if not SQL:
         SQL = '''SELECT * FROM bankcustomertest;'''
