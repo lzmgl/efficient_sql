@@ -74,7 +74,7 @@ if btnResult:
 SQL = queryText
 try:
     if not SQL:
-        SQL = '''SELECT * FROM bankcustomerdata;'''
+        SQL = '''SELECT * FROM bankcustomertest;'''
     cursor = db.cursor()
     cursor.execute(SQL)
     columns = cursor.description 
