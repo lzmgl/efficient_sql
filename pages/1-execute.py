@@ -66,8 +66,8 @@ st.title("EFFICIENT SQL")
 import time
 start = time.time()
 with st.sidebar.form("Input"):
-    # queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
-    queryText=st.radio('Select one:', sql_list)
+    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    # queryText=st.radio('Select one:', sql_list)
     btnResult = st.form_submit_button('Run')
 if btnResult:
     st.sidebar.text(f'Button pushed')
