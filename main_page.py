@@ -15,6 +15,37 @@ username = "admin"
 password = "woorifisa1!"
 database_name = 'SQL_IMPROVE'
 
+sql_list=[
+          '''SELECT 
+    emp_no, 
+    from_date, 
+    salary, 
+    COALESCE((
+        SELECT salary 
+        FROM salaries s2 
+        WHERE s2.emp_no = s1.emp_no 
+        AND s2.from_date < s1.from_date 
+        ORDER BY s2.from_date DESC 
+        LIMIT 1
+    ), 0) as last_year_salary,
+    salary - COALESCE((
+        SELECT salary 
+        FROM salaries s2 
+        WHERE s2.emp_no = s1.emp_no 
+        AND s2.from_date < s1.from_date 
+        ORDER BY s2.from_date DESC 
+        LIMIT 1
+    ), 0) as 연봉차이
+FROM salaries s1;''',
+'''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
+salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
+FROM salaries;''',
+'''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;''', 
+'''partitioning''',
+'''index''',
+'''index2'''
+
+]
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
     port=host_port,          # MySQL Server Port
@@ -57,5 +88,7 @@ st.write(
 st.write(
     "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
 st.write(
-    "SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;"
+    SQL)
+st.write(
+    sql_list
 )
