@@ -74,7 +74,7 @@ if btnResult:
 SQL = queryText
 try:
     if not SQL:
-        SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
+        SQL = '''SELECT * FROM bankcustomerdata;'''
     cursor = db.cursor()
     cursor.execute(SQL)
     columns = cursor.description 
