@@ -14,42 +14,6 @@ host_port = 3306
 username = "admin"
 password = "woorifisa1!"
 database_name = 'SQL_IMPROVE'
-
-sql_list={
-          'window 없이' : '''SELECT 
-    emp_no, 
-    from_date, 
-    salary, 
-    COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as last_year_salary,
-    salary - COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as 연봉차이
-FROM salaries s1;''',
-'window 활용':
-'''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
-salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
-FROM salaries;''',
-'partitioning 없이':
-'''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;''', 
-'partitioning 활용':
-'''partitioning''',
-'index 없이':
-'''index''',
-'index 활용':
-'''index2'''
-}
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
     port=host_port,          # MySQL Server Port
@@ -61,38 +25,53 @@ db = pymysql.connect(
 
 
 
-st.title("EFFICIENT SQL") 
+st.title("거래중지계좌 조회") 
+_abspath = os.path.dirname(os.path.abspath(__file__))
+image_path1 = _abspath + '/1.png'
+
+image1 = Image.open(image_path1)
+st.image(image1)
+
 
 import time
 start = time.time()
 with st.sidebar.form("Input"):
-    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
+    st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
-SQL = queryText
+cursor = db.cursor()
+SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 try:
     if not SQL:
-        SQL = '''SELECT * FROM bankcustomerdata;'''
-    cursor = db.cursor()
+        SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
     cursor.execute(SQL)
     columns = cursor.description 
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     df=pd.DataFrame(result)
 except:
     df='query 제대로 입력해'
+
 st.write(
-    SQL,
-    "   \n",
-    df,
-    "   \n",
-    "time = ", time.time()-start
+    "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
 )
+SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
+cursor.execute(SQL)
+columns = cursor.description 
+result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+
+if btnResult:
+    try:
+        SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
+        cursor.execute(SQL)
+        columns = cursor.description 
+        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+    except:
+        df='query 제대로 입력'
+
+    df=pd.DataFrame(result)
 st.write(
-    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
-st.write(
-    SQL)
-st.write(
-    sql_list
+    df,
+    "time = ", time.time()-start
 )
