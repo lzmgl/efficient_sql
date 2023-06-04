@@ -63,9 +63,6 @@ cursor.execute(SQL)
 columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 df=pd.DataFrame(result)
-st.write(
-    btnResult = st.button('Click me')
-)
 
 if btnResult:
     st.sidebar.text(f'Button pushed')

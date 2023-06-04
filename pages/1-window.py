@@ -67,11 +67,15 @@ result = [{columns[index][0]:column for index, column in enumerate(value)} for v
 import time
 start = time.time()
 with st.sidebar.form("Input"):
+    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
 with st.sidebar.form("Input2"):
+    queryText = st.text_area("SQL to execute:", height=3, max_chars=None)
     st.sidebar.text(f'있이 하는 쿼리')
     btnResult1 = st.form_submit_button('Run')
+SQL1=queryText
+SQL2=queryText
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
