@@ -25,53 +25,26 @@ db = pymysql.connect(
 
 
 
-st.title("거래중지계좌 조회") 
+st.title("ERD") 
 _abspath = os.path.dirname(os.path.abspath(__file__))
 image_path1 = _abspath + '/1.png'
 
 image1 = Image.open(image_path1)
 st.image(image1)
 
-
-import time
-start = time.time()
-with st.sidebar.form("Input"):
-    st.sidebar.text(f'없이 하는 쿼리')
-    btnResult = st.form_submit_button('Run')
-if btnResult:
-    st.sidebar.text(f'Button pushed')
-    start = time.time()
-cursor = db.cursor()
-SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-try:
-    if not SQL:
-        SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-    cursor.execute(SQL)
-    columns = cursor.description 
-    result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-    df=pd.DataFrame(result)
-except:
-    df='query 제대로 입력해'
+st.header("Index 활용 실습") 
 
 st.write(
     "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
 )
-SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-cursor.execute(SQL)
-columns = cursor.description 
-result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 
-if btnResult:
-    try:
-        SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-        cursor.execute(SQL)
-        columns = cursor.description 
-        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-    except:
-        df='query 제대로 입력'
+st.header("partitioning 활용 실습") 
 
-    df=pd.DataFrame(result)
 st.write(
-    df,
-    "time = ", time.time()-start
+    "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
+)
+st.header("window function 활용 실습") 
+
+st.write(
+    "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
 )
