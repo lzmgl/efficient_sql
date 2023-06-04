@@ -82,8 +82,7 @@ try:
     df=pd.DataFrame(result)
 except:
     df='query 입력해주세요'
-st.write(
-    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
+
 st.write(
     SQL,
     "   \n",
