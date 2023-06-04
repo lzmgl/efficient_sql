@@ -39,7 +39,7 @@ if btnResult:
 SQL = queryText
 try:
     if not SQL:
-        SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
+        SQL = '''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
     cursor = db.cursor()
     cursor.execute(SQL)
     columns = cursor.description 
@@ -57,13 +57,4 @@ st.write(
 st.write(
     "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
     "SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;"
-)
-SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-cursor.execute(SQL)
-columns = cursor.description 
-result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-df=pd.DataFrame(result)
-st.write(
-    df,
-    "time = ", time.time()-start
 )
