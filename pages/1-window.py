@@ -82,6 +82,17 @@ if btnResult:
         result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     except:
         df='query 제대로 입력해'
+if btnResult1:
+    st.sidebar.text(f'Button pushed')
+    start = time.time()
+
+    try:
+        cursor.execute(SQL2)
+        columns = cursor.description 
+        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+    except:
+        df='query 제대로 입력해'
+
 df=pd.DataFrame(result)
 
 st.write(
