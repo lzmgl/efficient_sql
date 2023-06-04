@@ -22,7 +22,10 @@ db = pymysql.connect(
     db=database_name,   # Database name
     charset='utf8'
 )
+SQL=''
 
+if not SQL:
+    SQL = '''SELECT * FROM salaries WHERE emp_no=20000;'''
 SQL1 = '''SELECT 
     emp_no, 
     from_date, 
@@ -58,6 +61,8 @@ image1 = Image.open(image_path1)
 st.image(image1)
 
 cursor = db.cursor()
+cursor.execute(SQL1)
+columns = cursor.description 
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 import time
 start = time.time()
