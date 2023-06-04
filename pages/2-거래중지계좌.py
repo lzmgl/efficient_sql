@@ -26,13 +26,13 @@ db = pymysql.connect(
 
 
 
+st.title("거래중지계좌 조회") 
 _abspath = os.path.dirname(os.path.abspath(__file__))
 image_path1 = _abspath + '/1.png'
 
 image1 = Image.open(image_path1)
 st.image(image1)
 
-st.title("거래중지계좌 조회") 
 
 import time
 start = time.time()
@@ -55,7 +55,7 @@ except:
     df='query 제대로 입력해'
 
 st.write(
-    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
+    "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
 )
 SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 cursor.execute(SQL)
