@@ -47,13 +47,7 @@ try:
     df=pd.DataFrame(result)
 except:
     df='query 제대로 입력해'
-st.write(
-    SQL,
-    "   \n",
-    df,
-    "   \n",
-    "time = ", time.time()-start
-)
+
 st.write(
     "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
     "SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;"
@@ -67,13 +61,16 @@ st.write(
     btnResult = st.button('Click me')
 )
 
+SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 if btnResult:
-    st.sidebar.text(f'Button pushed')
-    start = time.time()
-    SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
-    cursor.execute(SQL)
-    columns = cursor.description 
-    result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+    try:
+        st.sidebar.text(f'Button pushed')
+        start = time.time()
+        cursor.execute(SQL)
+        columns = cursor.description 
+        result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
+    except:
+        df='query 제대로 입력'
 
 df=pd.DataFrame(result)
 st.write(
