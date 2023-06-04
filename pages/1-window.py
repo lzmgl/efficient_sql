@@ -57,10 +57,10 @@ image_path1 = _abspath + '/1.png'
 image1 = Image.open(image_path1)
 st.image(image1)
 
+cursor = db.cursor()
 result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 import time
 start = time.time()
-cursor = db.cursor()
 with st.sidebar.form("Input"):
     st.sidebar.text(f'없이 하는 쿼리')
     btnResult = st.form_submit_button('Run')
