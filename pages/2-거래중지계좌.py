@@ -77,8 +77,8 @@ if btnResult:
     except:
         df='query 제대로 입력'
 
-df=pd.DataFrame(result)
-st.write(
-    df,
-    "time = ", time.time()-start
-)
+    df=pd.DataFrame(result)
+    st.write(
+        df,
+        "time = ", time.time()-start
+    )
