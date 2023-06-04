@@ -75,9 +75,9 @@ if btnResult:
         cursor.execute(SQL1)
         columns = cursor.description 
         result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-        df=pd.DataFrame(result)
     except:
         df='query 제대로 입력해'
+df=pd.DataFrame(result)
 
 st.write(
     "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
