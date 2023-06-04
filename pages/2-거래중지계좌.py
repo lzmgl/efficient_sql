@@ -26,8 +26,8 @@ db = pymysql.connect(
 
 
 
-_abspath = os.path.dirname(os.path.abspath(__file__))+'/../esset/data/'
-image_path1 = _abspath + '1.png'
+_abspath = os.path.dirname(os.path.abspath(__file__))
+image_path1 = _abspath + '/1.png'
 
 image1 = Image.open(image_path1)
 st.image(image1)
