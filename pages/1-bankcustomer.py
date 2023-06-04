@@ -78,4 +78,5 @@ if btnResult:
 df=pd.DataFrame(result)
 st.write(
     df
+    "time = ", time.time()-start
 )
