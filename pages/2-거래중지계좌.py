@@ -67,7 +67,6 @@ st.write(
 SQL='''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;'''
 if btnResult:
     try:
-        st.sidebar.text(f'Button pushed')
         start = time.time()
         cursor.execute(SQL)
         columns = cursor.description 
