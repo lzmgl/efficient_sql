@@ -83,16 +83,12 @@ try:
 except:
     df='query 제대로 입력해'
 st.write(
+    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
+st.write(
     SQL,
     "   \n",
     df,
     "   \n",
     "time = ", time.time()-start
 )
-st.write(
-    "예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌")
-st.write(
-    SQL)
-st.write(
-    sql_list
-)
+
