@@ -18,7 +18,7 @@ st.image(image0)
 
 
 st.header("INDEX 활용 실무 예제:")
-st.header("id로 정보 조회") 
+st.header("💰id로 정보 조회") 
 
 
 image1 = Image.open(_abspath + '/esset/index.png')
@@ -36,7 +36,7 @@ st.write(
     "**SELECT * FROM salaries WHERE emp_no=20000;**"
 )
 st.header("PARTITIONING 활용 실습 :") 
-st.header("거래중지대상 계좌") 
+st.header("💰거래중지대상 계좌") 
 image2 = Image.open(_abspath + '/esset/partition.png')
 st.image(image2)
 st.write(
@@ -52,7 +52,7 @@ st.write(
     "**SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';**"
 )
 st.header("WINDOW FUNCTION 활용 실습 :") 
-st.header("행의 순번 반환") 
+st.header("💰행의 순번 반환") 
 
 image3 = Image.open(_abspath + '/esset/window.png')
 st.image(image3)
