@@ -28,13 +28,13 @@ st.write(
     "Index 활용 X"
 )
 st.write(
-    "SELECT * FROM sal_ran WHERE emp_no=20000;"
+    "SELECT * FROM salaries WHERE salary>40000;"
 )
 st.write(
     "Index 활용 O"
 )
 st.write(
-    "SELECT * FROM salaries WHERE emp_no=20000;"
+    "SELECT * FROM saltest WHERE salary>40000;"
 )
 st.header("partitioning 활용 실습 : 거래중지대상 계좌") 
 st.write(
