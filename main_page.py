@@ -54,7 +54,7 @@ st.write(
 st.write(
     "SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';"
 )
-st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
+st.header("window function 활용 실습 : 행의 순번 반환") 
 st.write(
     "ex) 연 평균 잔고 순위"
 )
