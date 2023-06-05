@@ -17,7 +17,8 @@ st.image(image0)
 
 
 
-st.header("INDEX 활용 실습: id로 정보 조회") 
+st.header("""INDEX 활용 실무 예제: 
+          id로 정보 조회""") 
 
 
 image1 = Image.open(_abspath + '/esset/index.png')
