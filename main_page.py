@@ -56,7 +56,7 @@ st.write(
 )
 st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
 st.write(
-    "ex) 지난 해와 연봉 차이"
+    "ex) 연 평균 잔고 순서대로 줄세우기"
 )
 image3 = Image.open(_abspath + '/esset/1.png')
 st.image(image3)
