@@ -12,7 +12,7 @@ import pandas as pd
 st.title("ERD") 
 _abspath = os.path.dirname(os.path.abspath(__file__))
 
-image0 = Image.open(_abspath + '/esset/erd.png')
+image0 = Image.open(_abspath + '/esset/erderd.png')
 st.image(image0)
 
 
@@ -64,33 +64,17 @@ st.write(
     'window 활용 O'
 )
 st.write(
-    '''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
-salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
-FROM salaries;'''
+    '''SELECT id, balance, 
+ROW_NUMBER() OVER(ORDER BY balance desc)
+FROM bankcus5000;'''
 )
 st.write(
     'window 활용 X'
 )
 st.write(
-    '''SELECT 
-    emp_no, 
-    from_date, 
-    salary, 
-    COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as last_year_salary,
-    salary - COALESCE((
-        SELECT salary 
-        FROM salaries s2 
-        WHERE s2.emp_no = s1.emp_no 
-        AND s2.from_date < s1.from_date 
-        ORDER BY s2.from_date DESC 
-        LIMIT 1
-    ), 0) as 연봉차이
-FROM salaries s1;'''
+    '''SELECT id, balance,
+(SELECT COUNT(*) FROM bankcus5000 a
+WHERE a.balance <= b.balance)
+FROM bankcus5000 b
+ORDER BY balance DESC;'''
 )
