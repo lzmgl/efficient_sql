@@ -36,5 +36,5 @@ st.header("window function 활용 실습")
 image3 = Image.open(_abspath + '/esset/1.png')
 st.image(image3)
 st.write(
-    "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2년이상 거래가 없는 계좌"
+    "ex) 지난 해와 연봉 차이"
 )
