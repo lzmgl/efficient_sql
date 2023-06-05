@@ -73,8 +73,8 @@ with st.sidebar.form("Input"):
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
+    dur_time=0
 SQL = queryText
-dur_time=0
 try:
     if not SQL:
         SQL = ''''''
