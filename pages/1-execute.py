@@ -62,7 +62,7 @@ db = pymysql.connect(
 
 
 
-st.title("EFFICIENT SQL") 
+st.title("효율적인 SQL") 
 
 import time
 start = time.time()
@@ -83,7 +83,7 @@ try:
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     df=pd.DataFrame(result)
 except:
-    df='query 입력해주세요'
+    df='SQL문을 입력해주세요.'
 
 st.write(
     SQL,
