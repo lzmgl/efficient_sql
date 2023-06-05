@@ -58,9 +58,9 @@ st.write(
     'window 활용 O'
 )
 st.write(
-    '''SELECT id, balance, 
+    '''**SELECT id, balance, 
 ROW_NUMBER() OVER(ORDER BY balance desc)
-FROM bankcus5000;'''
+FROM bankcus5000;**'''
 )
 st.write(
     'window 활용 X'
