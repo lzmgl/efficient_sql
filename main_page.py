@@ -12,7 +12,7 @@ import pandas as pd
 st.title("ERD") 
 _abspath = os.path.dirname(os.path.abspath(__file__))
 
-image0 = Image.open(_abspath + '/esset/1.png')
+image0 = Image.open(_abspath + '/esset/erd.png')
 st.image(image0)
 
 

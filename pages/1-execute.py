@@ -42,13 +42,13 @@ FROM salaries s1;''',
 salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
 FROM salaries;''',
 'partitioning 없이':
-'''SELECT id,balance,last_date FROM bankcustomertest WHERE balance>=10 AND balance<50;''', 
+'''SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50;''', 
 'partitioning 활용':
-'''partitioning''',
+'''SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50;''',
 'index 없이':
-'''index''',
+'''SELECT * FROM sal_ran WHERE emp_no=20000;''',
 'index 활용':
-'''index2'''
+'''SELECT * FROM salaries WHERE emp_no=20000;'''
 }
 db = pymysql.connect(
     host=host_name,     # MySQL Server Address
