@@ -74,6 +74,7 @@ if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
 SQL = queryText
+dur_time=0
 try:
     if not SQL:
         SQL = ''''''
