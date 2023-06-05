@@ -26,13 +26,13 @@ st.write(
     "Index 활용 X"
 )
 st.write(
-    "SELECT * FROM sal_ran WHERE emp_no=20000;"
+    "**SELECT * FROM sal_ran WHERE emp_no=20000;**"
 )
 st.write(
     "Index 활용 O"
 )
 st.write(
-    "SELECT * FROM salaries WHERE emp_no=20000;"
+    "**SELECT * FROM salaries WHERE emp_no=20000;**"
 )
 st.header("partitioning 활용 실습 : 거래중지대상 계좌") 
 
@@ -42,13 +42,13 @@ st.write(
     "Partition 활용 X"
 )
 st.write(
-    "SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';"
+    "**SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';**"
 )
 st.write(
     "Partition 활용 O"
 )
 st.write(
-    "SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';"
+    "**SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';**"
 )
 st.header("window function 활용 실습 : 행의 순번 반환") 
 
@@ -66,9 +66,9 @@ st.write(
     'window 활용 X'
 )
 st.write(
-    '''SELECT id, balance,
+    '''**SELECT id, balance,
 (SELECT COUNT(*) FROM bankcus5000 a
 WHERE a.balance <= b.balance)
 FROM bankcus5000 b
-ORDER BY balance DESC;'''
+ORDER BY balance DESC;**'''
 )
