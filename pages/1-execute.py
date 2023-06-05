@@ -73,7 +73,6 @@ with st.sidebar.form("Input"):
 if btnResult:
     st.sidebar.text(f'Button pushed')
     start = time.time()
-    dur_time=0
 SQL = queryText
 try:
     if not SQL:
@@ -85,13 +84,12 @@ try:
     df=pd.DataFrame(result)
 except:
     df='query 입력해주세요'
-st.write(
-    "time = ", time.time()-start
-)
+
 st.write(
     SQL,
     "   \n",
     df,
     "   \n",
+    "time = ", time.time()-start
 )
 
