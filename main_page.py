@@ -23,7 +23,7 @@ st.write(
 )
 
 image1 = Image.open(_abspath + '/esset/1.png')
-st.image(image1)
+# st.image(image1)
 st.write(
     "Index 활용 X"
 )
@@ -59,7 +59,7 @@ st.write(
     "ex) 연 평균 잔고 순위"
 )
 image3 = Image.open(_abspath + '/esset/1.png')
-st.image(image3)
+# st.image(image3)
 st.write(
     'window 활용 O'
 )
