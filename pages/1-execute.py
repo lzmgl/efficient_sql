@@ -82,16 +82,16 @@ try:
     cursor.execute(SQL)
     columns = cursor.description 
     result = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
-    dur_time=time.time()-start
     df=pd.DataFrame(result)
 except:
     df='query 입력해주세요'
-
+st.write(
+    "time = ", time.time()-start
+)
 st.write(
     SQL,
     "   \n",
     df,
     "   \n",
-    "time = ", dur_time
 )
 
