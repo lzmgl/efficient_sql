@@ -17,7 +17,7 @@ st.image(image0)
 
 
 
-st.header("Index 활용 실습") 
+st.header("Index 활용 실습: id로 정보 찾기") 
 st.write(
     "ex) id가 20000인 정보"
 )
@@ -27,7 +27,7 @@ st.image(image1)
 st.write(
     "sql"
 )
-st.header("partitioning 활용 실습") 
+st.header("partitioning 활용 실습 : 거래중지대상 계좌") 
 st.write(
     "ex) 예금 잔액이 1만원이상~5만원 미만이면서 2018년 1월 1일 이후 거래가 없는 계좌"
 )
@@ -36,7 +36,7 @@ st.image(image2)
 st.write(
     "sql"
 )
-st.header("window function 활용 실습") 
+st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
 st.write(
     "ex) 지난 해와 연봉 차이"
 )
