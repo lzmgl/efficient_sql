@@ -46,13 +46,13 @@ st.write(
     "Partition 활용 X"
 )
 st.write(
-    "SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50;"
+    "SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';"
 )
 st.write(
     "Partition 활용 O"
 )
 st.write(
-    "SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50;"
+    "SELECT id,balance,last_date FROM bct_amt_part WHERE balance>=10 AND balance<50 AND last_date>'2018-01-01';"
 )
 st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
 st.write(
