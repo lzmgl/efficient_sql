@@ -17,7 +17,7 @@ st.image(image0)
 
 
 
-st.header("Index 활용 실습: id로 정보 찾기") 
+st.header("Index 활용 실습: id로 정보 조회") 
 st.write(
     "ex) id가 20000인 정보"
 )
@@ -56,7 +56,7 @@ st.write(
 )
 st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
 st.write(
-    "ex) 연 평균 잔고 순서대로 줄세우기"
+    "ex) 연 평균 잔고 순위"
 )
 image3 = Image.open(_abspath + '/esset/1.png')
 st.image(image3)
