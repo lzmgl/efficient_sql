@@ -25,7 +25,7 @@ st.write(
 image1 = Image.open(_abspath + '/esset/1.png')
 st.image(image1)
 st.write(
-    "sql"
+    "SELECT * FROM sal_ran WHERE emp_no=20000;"
 )
 st.header("partitioning 활용 실습 : 거래중지대상 계좌") 
 st.write(
@@ -34,7 +34,7 @@ st.write(
 image2 = Image.open(_abspath + '/esset/1.png')
 st.image(image2)
 st.write(
-    "sql"
+    "SELECT id,balance,last_date FROM bct_amt WHERE balance>=10 AND balance<50;"
 )
 st.header("window function 활용 실습 : 전 행과의 차이값 계산") 
 st.write(
@@ -43,5 +43,36 @@ st.write(
 image3 = Image.open(_abspath + '/esset/1.png')
 st.image(image3)
 st.write(
-    "sql"
+    'window 활용 O'
+)
+st.write(
+    '''SELECT emp_no, from_date, salary, LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as last_year_salary, 
+salary - LAG(salary, 1, 0) OVER (PARTITION BY emp_no ORDER BY emp_no) as 연봉차이
+FROM salaries;'''
+)
+st.write(
+    'window 활용 X'
+)
+st.write(
+    '''SELECT 
+    emp_no, 
+    from_date, 
+    salary, 
+    COALESCE((
+        SELECT salary 
+        FROM salaries s2 
+        WHERE s2.emp_no = s1.emp_no 
+        AND s2.from_date < s1.from_date 
+        ORDER BY s2.from_date DESC 
+        LIMIT 1
+    ), 0) as last_year_salary,
+    salary - COALESCE((
+        SELECT salary 
+        FROM salaries s2 
+        WHERE s2.emp_no = s1.emp_no 
+        AND s2.from_date < s1.from_date 
+        ORDER BY s2.from_date DESC 
+        LIMIT 1
+    ), 0) as 연봉차이
+FROM salaries s1;'''
 )
