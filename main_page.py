@@ -8,16 +8,17 @@ import os
 import pymysql
 import pandas as pd
 
+st.title("실무적용 예제") 
+image22 = Image.open(_abspath + '/esset/1.png')
+st.image(image22)
 
-st.title("ERD") 
+st.header("ERD") 
 _abspath = os.path.dirname(os.path.abspath(__file__))
 
 image0 = Image.open(_abspath + '/esset/erderd.png')
 st.image(image0)
 
 
-image22 = Image.open(_abspath + '/esset/1.png')
-st.image(image22)
 
 st.header("INDEX 활용 실무 예제:")
 st.header("💰id로 정보 조회") 
