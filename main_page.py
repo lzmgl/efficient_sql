@@ -7,13 +7,13 @@ import os
 
 import pymysql
 import pandas as pd
+_abspath = os.path.dirname(os.path.abspath(__file__))
 
 st.title("실무적용 예제") 
 image22 = Image.open(_abspath + '/esset/1.png')
 st.image(image22)
 
 st.header("ERD") 
-_abspath = os.path.dirname(os.path.abspath(__file__))
 
 image0 = Image.open(_abspath + '/esset/erderd.png')
 st.image(image0)
