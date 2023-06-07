@@ -16,6 +16,8 @@ image0 = Image.open(_abspath + '/esset/erderd.png')
 st.image(image0)
 
 
+image22 = Image.open(_abspath + '/esset/1.png')
+st.image(image22)
 
 st.header("INDEX 활용 실무 예제:")
 st.header("💰id로 정보 조회") 
