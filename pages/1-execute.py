@@ -9,10 +9,10 @@ import pymysql
 import pandas as pd
 
 
-host_name = "woori-fisa.cfnz7hfzq9bn.ap-northeast-2.rds.amazonaws.com"
+host_name = ""
 host_port = 3306
 username = "admin"
-password = "woorifisa1!"
+password = ""
 database_name = 'SQL_IMPROVE'
 
 sql_list={
