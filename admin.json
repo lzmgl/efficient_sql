@@ -1,7 +1,7 @@
 {
-  "host_name": "woori-fisa.cfnz7hfzq9bn.ap-northeast-2.rds.amazonaws.com",
-  "host_port": 3306,
-  "username": "admin",
-  "password": "woorifisa1!",
-  "database_name": "SQL_IMPROVE"
+  "host_name": "",
+  "host_port": 22,
+  "username": "",
+  "password": "!",
+  "database_name": ""
 }
